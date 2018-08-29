@@ -61,11 +61,11 @@ class MyAppState extends State<MyApp> {
         "route": "/demo_animated_widgets",
         "widget": new AnimateWidgateDemoPage()
       },
-      {
-        "title": "animated widgets demo",
-        "route": "/demo_animated_widgets/:id",
-        "widget": new AnimateWidgateDemo()
-      }
+      // {
+      //   "title": "animated widgets demo",
+      //   "route": "/demo_animated_widgets/:id",
+      //   "widget": new AnimateWidgateDemo()
+      // }
     ];
     Application.router = new Router();
     Application.router.define("/", handler: new Handler(
