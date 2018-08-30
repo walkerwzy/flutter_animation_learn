@@ -1,16 +1,11 @@
-import 'package:animation2/someWidegts.dart';
-import 'package:flutter/material.dart';
+import 'package:animation2/custom_widgets.dart';
 import 'package:fluro/fluro.dart';
-import 'basic.dart';
-import 'animatedWidgets.dart';
-import 'animatedBuilder.dart';
-import 'useLerp.dart';
-import 'useTweenObject.dart';
-import 'useTween2.dart';
-import 'useTweenObjectArray.dart';
+import 'package:flutter/material.dart';
+import 'Basic/someWidegts.dart';
+import 'tween_home.dart';
 
 class Application {
-  static Router router;
+  static Router router = Router();
 }
 
 void main() => runApp(new MyApp());
@@ -25,49 +20,22 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   MyAppState() {
     final routes = [
-      {"title": "basic", "route": "/basic", "widget": new LogoApp()},
       {
-        "title": "use animated widgets",
-        "route": "/a_widgets",
-        "widget": new AnimatedWidgetsDemo()
-      },
-      {
-        "title": "use animated builder",
-        "route": "/a_builder",
-        "widget": new Logo2App()
-      },
-      {
-        "title": "use lerp_double gen interplolate",
-        "route": "/bar_lerp",
-        "widget": new ChartPage()
-      },
-      {
-        "title": "use tween gen interplolate",
-        "route": "/bar_tween",
-        "widget": new ChartPageTween()
-      },
-      {
-        "title": "use tween object",
-        "route": "/bar_tween_object",
-        "widget": new TweenChartPage()
-      },
-      {
-        "title": "use obj array to tween",
-        "route": "/bar_array_tween",
-        "widget": new ChartPageArray()
-      },
-      {
-        "title": "some animated widgets demo",
+        "title": "Basic Animation",
         "route": "/demo_animated_widgets",
-        "widget": new AnimateWidgateDemoPage()
+        "widget": new AnimateDemoPage()
       },
-      // {
-      //   "title": "animated widgets demo",
-      //   "route": "/demo_animated_widgets/:id",
-      //   "widget": new AnimateWidgateDemo()
-      // }
+      {
+        "title": "Use Tween",
+        "route": "/tween",
+        "widget": new TweenHomePage(),
+      },
+      {
+        "title": "Custom Home",
+        "route": "/cust",
+        "widget": new MyDemosPage()
+      },
     ];
-    Application.router = new Router();
     Application.router.define("/", handler: new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return new HomeWidgets(

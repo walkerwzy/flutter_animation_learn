@@ -3,22 +3,21 @@ import 'dart:math';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
-import 'parts/bar2.dart';
+import '../parts/bar.dart';
 
 void main() {
-  runApp(new MaterialApp(home: new ChartPageArray()));
+  runApp(new MaterialApp(home: new TweenChartPage()));
 }
 
-class ChartPageArray extends StatefulWidget {
+class TweenChartPage extends StatefulWidget {
   @override
-  ChartPageArrayState createState() => new ChartPageArrayState();
+  TweenChartPageState createState() => new TweenChartPageState();
 }
 
-class ChartPageArrayState extends State<ChartPageArray> with TickerProviderStateMixin {
-  static const size = const Size(200.0, 100.0);
+class TweenChartPageState extends State<TweenChartPage> with TickerProviderStateMixin {
   final random = new Random();
   AnimationController animation;
-  BarChartVTween tween;
+  BarChartTween tween;
 
   @override
   void initState() {
@@ -27,10 +26,7 @@ class ChartPageArrayState extends State<ChartPageArray> with TickerProviderState
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    tween = new BarChartVTween(
-      new BarChartV.empty(size),
-      new BarChartV.random(size, random),
-    );
+    tween = new BarChartTween(new BarChart.empty(), new BarChart.random(random));
     animation.forward();
   }
 
@@ -42,10 +38,7 @@ class ChartPageArrayState extends State<ChartPageArray> with TickerProviderState
 
   void changeData() {
     setState(() {
-      tween = new BarChartVTween(
-        tween.evaluate(animation),
-        new BarChartV.random(size, random),
-      );
+      tween = new BarChartTween(tween.evaluate(animation), new BarChart.random(random));
       animation.forward(from: 0.0);
     });
   }
@@ -53,11 +46,11 @@ class ChartPageArrayState extends State<ChartPageArray> with TickerProviderState
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("variable array"),),
+      appBar: new AppBar(title: new Text("bar tween object"),),
       body: new Center(
         child: new CustomPaint(
-          size: size,
-          painter: new BarChartVPainter(tween.animate(animation)),
+          size: new Size(200.0, 100.0),
+          painter: new BarChartPainter(tween.animate(animation)),
         ),
       ),
       floatingActionButton: new FloatingActionButton(

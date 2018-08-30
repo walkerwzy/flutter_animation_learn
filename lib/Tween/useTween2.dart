@@ -56,6 +56,7 @@ class ChartPageTweenState extends State<ChartPageTween> with TickerProviderState
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(title: Text("Tween Interplolate")),
       body: new Center(
         child: new CustomPaint(
           size: new Size(200.0, 100.0),
