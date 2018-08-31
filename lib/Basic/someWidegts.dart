@@ -143,7 +143,7 @@ class _ExistAnimateWidgateDemoState extends State<ExistAnimateWidgateDemo>
       margin: const EdgeInsets.all(10.0),
       padding: const EdgeInsets.all(7.0),
       // transform: new Matrix4.translationValues(4.0, measure1, 0.0),
-      // transform: new Matrix4.rotationY(math.pi/measure1*10.0),
+      transform: new Matrix4.rotationZ(0.2),
       // width: measure1,
       // height: 75.0,
       curve: Curves.ease,
